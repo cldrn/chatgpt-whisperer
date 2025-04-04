@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tocroot>
+  <toc id="chatgptwhisperer.toc" label="ChatGPTWhisperer" tocType="module">
+    <tocitem target="chatgptwhisperer/overview" label="Overview"/>
+    <tocitem target="chatgptwhisperer/features" label="Features"/>
+    <tocitem target="chatgptwhisperer/settings" label="Settings"/>
+  </toc>
+</tocroot>

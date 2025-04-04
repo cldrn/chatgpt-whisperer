@@ -1,0 +1,40 @@
+name: Build and Release ChatGPTWhisperer Plugin
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # e.g., v1.0.0, v2.3.1
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    env:
+      GHIDRA_VERSION: 10.4
+      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Download Ghidra
+        run: |
+          wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_${GHIDRA_VERSION}_build/ghidra_${GHIDRA_VERSION}_PUBLIC_20231010.zip
+          unzip ghidra_${GHIDRA_VERSION}_PUBLIC_20231010.zip -d ghidra
+
+      - name: Build Ghidra Plugin
+        run: ./gradlew buildExtension
+
+      - name: Upload Plugin to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
