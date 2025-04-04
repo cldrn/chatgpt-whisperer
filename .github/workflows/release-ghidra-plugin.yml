@@ -31,7 +31,7 @@ jobs:
       - name: Check Java environment
         run: |
           java -version
-          gradlew -q properties | grep java
+          gradle -q properties | grep java
 
       - name: Build ChatGPTWhisperer Plugin with Ghidra 11.2
         run: gradle -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
