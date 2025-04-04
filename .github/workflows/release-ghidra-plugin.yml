@@ -3,15 +3,15 @@ name: Build and Release ChatGPTWhisperer Plugin
 on:
   push:
     tags:
-      - 'v*.*.*'  # Triggers on version tags like v1.0.0
+      - 'v*.*.*'  # e.g., v1.0.0, v2.3.1
+  workflow_dispatch:  # allows manual trigger from GitHub Actions UI
 
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
 
     env:
-      GHIDRA_VERSION: 11.2
-      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra
+      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra/ghidra_11.3.1_PUBLIC
 
     steps:
       - name: Checkout repository
@@ -23,15 +23,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Download Ghidra 11.2
+      - name: Download Ghidra 11.3.1
         run: |
           wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.3.1_build/ghidra_11.3.1_PUBLIC_20250219.zip
           unzip ghidra_11.3.1_PUBLIC_20250219.zip -d ghidra
 
-      - name: Build ChatGPTWhisperer Plugin
-        run: ./gradlew buildExtension
+      - name: Build ChatGPTWhisperer Plugin with Ghidra 11.2
+        run: gradle -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
 
-      - name: Create GitHub Release and Upload Plugin ZIP
+      - name: Upload Plugin ZIP to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: dist/*.zip
