@@ -28,6 +28,11 @@ jobs:
           wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.3.1_build/ghidra_11.3.1_PUBLIC_20250219.zip
           unzip ghidra_11.3.1_PUBLIC_20250219.zip -d ghidra
 
+      - name: Check Java environment
+        run: |
+          java -version
+          gradlew -q properties | grep java
+
       - name: Build ChatGPTWhisperer Plugin with Ghidra 11.2
         run: gradle -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
 
