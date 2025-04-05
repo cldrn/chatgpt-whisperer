@@ -40,6 +40,7 @@ Latest Ghidra version tested on:11.3.1
 ## Building the extension
 
 1. Use gradle to compile setting your local Ghidra installation path.
+
 `gradle -PGHIDRA_INSTALL_DIR=<Ghidra Path>`
 
 2. The extension will be generated in .zip inside the folder /dist
