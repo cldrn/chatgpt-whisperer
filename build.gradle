@@ -24,7 +24,6 @@ java {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.release = 21
     sourceCompatibility = '21'
     targetCompatibility = '21'
 }
