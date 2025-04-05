@@ -34,7 +34,7 @@ Latest Ghidra version tested on:11.3.1
 ## Installation
 
 1. Install the `.zip` file into Ghidra via `File > Install Extensions`.
-2. Open the plugin through `Window > ChatGPTWhisperer` or use the `Tools` menu.
+2. Open the plugin through the `Tools` menu.
 ---
 
 ## Building the extension
