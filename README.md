@@ -67,7 +67,7 @@ Apache License, Version 2.0. Contributions welcome!
 ---
 
 ## Credits
-Inspired [GhidraChatGPT](https://github.com/likvidera/GhidraChatGPTby) and developed by [PwnLabMX](https://github.com/PwnLabMX) with ❤️ and reverse engineering in mind.
+Inspired by [GhidraChatGPT](https://github.com/likvidera/GhidraChatGPTby) and developed by [PwnLabMX](https://github.com/PwnLabMX) with ❤️ and reverse engineering in mind.
 
 ---
 
