@@ -1,9 +1,6 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/cldrn/chatgpt-whisperer)](https://github.com/cldrn/chatgpt-whisperer/releases)
-[![GitHub stars](https://img.shields.io/github/stars/cldrn/chatgpt-whisperer)](https://github.com/cldrn/chatgpt-whisperer/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/cldrn/chatgpt-whisperer)](https://github.com/cldrn/chatgpt-whisperer/network/members)
-[![GitHub contributors](https://img.shields.io/github/contributors/cldrn/chatgpt-whisperer)](https://github.com/cldrn/chatgpt-whisperer/graphs/contributors)
-[![Follow @lauriewired](https://img.shields.io/twitter/follow/calderpwn?style=social)](https://x.com/calderpwn)
+[![Follow @calderpwn](https://img.shields.io/twitter/follow/calderpwn?style=social)](https://x.com/calderpwn)
 
 # ChatGPTWhisperer for Ghidra
 
