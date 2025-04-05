@@ -22,20 +22,25 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-
+          cache: gradle
 
       - name: Download Ghidra 11.2
         run: |
           wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2_build/ghidra_11.2_PUBLIC_20240926.zip
           unzip ghidra_11.2_PUBLIC_20240926.zip -d ghidra
 
-      - name: Check Java environment
+      - name: Confirm Java setup
         run: |
+          echo "Java version:"
           java -version
-          gradle -q properties | grep java
+          echo "Javac version:"
+          javac -version
+
+      - name: Check Gradle Java properties
+        run: ./gradlew -q properties | grep java
 
       - name: Build ChatGPTWhisperer Plugin with Ghidra 11.2
-        run: gradle -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
+        run: ./gradlew buildExtension -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
 
       - name: Upload Plugin ZIP to GitHub Release
         uses: softprops/action-gh-release@v1
@@ -43,4 +48,3 @@ jobs:
           files: dist/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
