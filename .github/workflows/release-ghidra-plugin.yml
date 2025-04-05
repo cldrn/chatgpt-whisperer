@@ -29,6 +29,12 @@ jobs:
           wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2_build/ghidra_11.2_PUBLIC_20240926.zip
           unzip ghidra_11.2_PUBLIC_20240926.zip -d ghidra
 
+      - name: Remove Ghidra zip to prevent accidental re-zip
+        run: rm -f ghidra_11.2_PUBLIC_20240926.zip
+
+      - name: Clean old dist files
+        run: rm -rf dist/*
+
       - name: Confirm Java setup
         run: |
           echo "Java version:"
