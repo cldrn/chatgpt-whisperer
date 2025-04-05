@@ -37,10 +37,10 @@ jobs:
           javac -version
 
       - name: Check Gradle Java properties
-        run: ./gradlew -q properties | grep java
+        run: gradle -q properties | grep java
 
       - name: Build ChatGPTWhisperer Plugin with Ghidra 11.2
-        run: ./gradlew buildExtension -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
+        run: gradle buildExtension -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
 
       - name: Upload Plugin ZIP to GitHub Release
         uses: softprops/action-gh-release@v1
