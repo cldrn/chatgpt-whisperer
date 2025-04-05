@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra/ghidra_11.2_PUBLIC
+      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra/ghidra_11.3.1_PUBLIC
 
     steps:
       - name: Checkout repository
