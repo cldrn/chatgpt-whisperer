@@ -24,13 +24,13 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Download Ghidra 11.2
+      - name: Download Ghidra 11.3.1
         run: |
-          wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2_build/ghidra_11.2_PUBLIC_20240926.zip
-          unzip ghidra_11.2_PUBLIC_20240926.zip -d ghidra
+          wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.3.1_build/ghidra_11.3.1_PUBLIC_20250219.zip
+          unzip ghidra_11.3.1_PUBLIC_20250219.zip -d ghidra
 
       - name: Remove Ghidra zip to prevent accidental re-zip
-        run: rm -f ghidra_11.2_PUBLIC_20240926.zip
+        run: rm -f ghidra_11.3.1_PUBLIC_20250219.zip
 
       - name: Clean old dist files
         run: rm -rf dist/*

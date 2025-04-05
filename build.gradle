@@ -36,9 +36,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.theokanning.openai-gpt3-java:service:0.18.2'
-    implementation 'org.json:json:20250107'
+    // Latest stable version of the OpenAI Java SDK forked by Theo Kanning
+    implementation 'com.theokanning.openai-gpt3-java:service:0.18.3'  // bugfix + minor improvements
+
+    // Use the latest org.json release compatible with Java 21
+    implementation 'org.json:json:20240303'
 }
+
 
 //---------------------- Utility Task -------------------------------------
 
