@@ -49,7 +49,7 @@ jobs:
         run: |
           mkdir cleaned
           unzip dist/*.zip -d cleaned
-          rm -rf cleaned/ghidra
+          rm -rf cleaned/ChatGPTWhisperer/ghidra
           cd cleaned
           zip -r ../ChatGPTWhisperer-clean.zip ./*
           cd ..
