@@ -151,7 +151,7 @@ public class ChatGPTWhispererComponent extends ComponentProvider {
     }
 
     public Double askForTemperature(double current) {
-        SpinnerNumberModel model = new SpinnerNumberModel(current, 0.0, 2.0, 0.1);
+        SpinnerNumberModel model = new SpinnerNumberModel(current, 0.0, 1.0, 0.1);
         JSpinner spinner = new JSpinner(model);
         int result = JOptionPane.showConfirmDialog(null, spinner, "Set Temperature (0.0 - 2.0)", JOptionPane.OK_CANCEL_OPTION);
         return result == JOptionPane.OK_OPTION ? (Double) spinner.getValue() : null;
