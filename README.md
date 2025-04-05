@@ -62,3 +62,16 @@ Apache License, Version 2.0. Contributions welcome!
 
 ## Credits
 Inspired [GhidraChatGPT](https://github.com/likvidera/GhidraChatGPTby) and developed by [PwnLabMX](https://github.com/PwnLabMX) with ❤️ and reverse engineering in mind.
+
+---
+
+## Legal Notice
+
+This plugin is provided **"as is"** without any warranty or guarantee of any kind, express or implied. The use of this plugin is at the sole risk and responsibility of the user. By using this plugin, you acknowledge and agree that:
+
+- You are solely responsible for how you use the plugin and for the results obtained from its usage.
+- The authors and contributors are not liable for any damages, data loss, system compromise, or other issues that may arise directly or indirectly from the use of this software.
+- You must comply with all applicable laws, regulations, and terms of service for any platform or software you analyze or interact with using this tool.
+- This project is not affiliated with or endorsed by the NSA, the Ghidra project, or OpenAI.
+
+Always use this plugin responsibly and ethically.

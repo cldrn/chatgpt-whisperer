@@ -48,15 +48,20 @@ jobs:
         run: |
           echo "Files in dist/:"
           ls -lh dist/
-      - name: Rename plugin ZIP to include version
+      - name: Keep only the built plugin ZIP
         run: |
-          TAG_NAME=${GITHUB_REF##*/}
-          mv dist/ChatGPTWhisperer.zip dist/ChatGPTWhisperer-${TAG_NAME}.zip
+          mkdir -p release
+          cp dist/*.zip release/
+          rm -rf ghidra* build/ dist/ .gradle/ *.zip
+      - name: List ZIP files in release
+        run: |
+          echo "Files in release/:"
+          ls -lh release/
 
       - name: Upload plugin ZIP to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/ChatGPTWhisperer-${{ github.ref_name }}.zip
+          files: release/ChatGPTWhisperer-${{ github.ref_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
