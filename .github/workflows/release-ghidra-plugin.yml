@@ -44,24 +44,26 @@ jobs:
 
       - name: Build ChatGPTWhisperer Plugin with Ghidra 11.2
         run: gradle -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
-      - name: List ZIP files in dist
+
+      - name: Repackage plugin ZIP without ghidra/ folder
         run: |
-          echo "Files in dist/:"
-          ls -lh dist/
-      - name: Keep only the built plugin ZIP
+          mkdir cleaned
+          unzip dist/*.zip -d cleaned
+          rm -rf cleaned/ghidra
+          cd cleaned
+          zip -r ../ChatGPTWhisperer-clean.zip ./*
+          cd ..
+          rm -rf cleaned dist/
+
+      - name: Rename plugin zip with tag name
         run: |
-          mkdir -p release
-          cp dist/*.zip release/
-          rm -rf ghidra* build/ dist/ .gradle/ *.zip
-      - name: List ZIP files in release
-        run: |
-          echo "Files in release/:"
-          ls -lh release/
+          TAG_NAME=${GITHUB_REF##*/}
+          mv ChatGPTWhisperer-clean.zip ChatGPTWhisperer-${TAG_NAME}.zip
 
       - name: Upload plugin ZIP to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: release/*.zip
+          files: ChatGPTWhisperer-${{ github.ref_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
