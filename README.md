@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cldrn/chatgpt-whisperer)](https://github.com/cldrn/chatgpt-whisperer/releases)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cldrn/chatgpt-whisperer)](https://github.com/cldrn/chatgpt-whisperer/tags)
 [![Follow @calderpwn](https://img.shields.io/twitter/follow/calderpwn?style=social)](https://x.com/calderpwn)
 
 # ChatGPTWhisperer for Ghidra
