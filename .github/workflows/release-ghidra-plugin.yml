@@ -38,6 +38,8 @@ jobs:
 
       - name: Check Gradle Java properties
         run: gradle -q properties | grep java
+      - name: Check Gradle Java Toolchain Status
+        run: gradle --info buildExtension -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
 
       - name: Build ChatGPTWhisperer Plugin with Ghidra 11.2
         run: gradle buildExtension -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
