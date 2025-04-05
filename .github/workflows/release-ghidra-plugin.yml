@@ -37,7 +37,7 @@ jobs:
           javac -version
 
       - name: Build ChatGPTWhisperer Plugin with Ghidra 11.2
-        run: gradle assembleExtension -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
+        run: gradle -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
       - name: List ZIP files in dist
         run: |
           echo "Files in dist/:"
