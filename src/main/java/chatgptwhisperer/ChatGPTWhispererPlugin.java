@@ -47,18 +47,17 @@ public class ChatGPTWhispererPlugin extends ProgramPlugin {
     private static final String SIGNATURE_PROMPT =
         "Analyze this function and propose a likely function signature, including return type, parameter names/types, and a better function name if possible. Use standard C notation in your response.\n\n%s";
 
+    private String assistantPersona =
+        "You are an expert reverse engineering assistant trained in analyzing low-level code, including firmware, embedded systems, and decompiled binaries. Your role is to explain complex logic, uncover vulnerabilities, and suggest improvements based on secure coding principles. You understand ARM, C, memory layout, and common patterns found in real-world devices.";
+
     private ConsoleService cs;
     private CodeViewerService cvs;
     private ChatGPTWhispererComponent uiComponent;
-
     private String apiToken;
     private String openAiModel = "gpt-4o";
     private double temperature = 0.7;
     private boolean appendToComment = false;
-
-    private String assistantPersona =
-        "You are an expert reverse engineering assistant trained in analyzing low-level code, including firmware, embedded systems, and decompiled binaries. Your role is to explain complex logic, uncover vulnerabilities, and suggest improvements based on secure coding practices. You understand ARM, C, memory layout, and common patterns found in real-world software. When analyzing code, clearly explain behavior, and identify risks.";
-
+    
     public ChatGPTWhispererPlugin(PluginTool tool) {
         super(tool);
         String pluginName = getName();
