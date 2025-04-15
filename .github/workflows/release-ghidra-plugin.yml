@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra/ghidra_11.3.1_PUBLIC
+      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra/ghidra_11.3.2_PUBLIC
 
     steps:
       - name: Checkout repository
@@ -24,13 +24,13 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Download Ghidra 11.3.1
+      - name: Download Ghidra 11.3.2
         run: |
-          wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.3.1_build/ghidra_11.3.1_PUBLIC_20250219.zip
-          unzip ghidra_11.3.1_PUBLIC_20250219.zip -d ghidra
+          wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.3.2_build/ghidra_11.3.2_PUBLIC_20250415.zip
+          unzip ghidra_11.3.2_PUBLIC_20250415.zip -d ghidra
 
       - name: Remove Ghidra zip to prevent accidental re-zip
-        run: rm -f ghidra_11.3.1_PUBLIC_20250219.zip
+        run: rm -f ghidra_11.3.2_PUBLIC_20250415.zip
 
       - name: Clean old dist files
         run: rm -rf dist/*
