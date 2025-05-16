@@ -42,7 +42,7 @@ jobs:
           echo "Javac version:"
           javac -version
 
-      - name: Build ChatGPTWhisperer Plugin with Ghidra 11.3.1
+      - name: Build ChatGPTWhisperer Plugin with Ghidra 11.3.2
         run: gradle -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
 
       - name: Repackage plugin ZIP without ghidra/ folder
