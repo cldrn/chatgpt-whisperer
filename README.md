@@ -6,8 +6,7 @@
 
 ChatGPTWhisperer is a Ghidra plugin that integrates OpenAI's ChatGPT to assist with reverse engineering tasks. It enables AI-powered function analysis, vulnerability detection, documentation, and batch processing within the Ghidra UI.
 
-Latest Ghidra version tested on:11.3.2
-
+Latest Ghidra version tested on: 11.3.2
 
 [![Watch how it works!](https://img.youtube.com/vi/M80hySzSEOA/0.jpg)](https://www.youtube.com/watch?v=M80hySzSEOA)
 
@@ -23,15 +22,17 @@ Latest Ghidra version tested on:11.3.2
 
 ### Signature Assistance
 - **Suggest Function Signature** – Let ChatGPT suggest return type, name, and parameters.
-- **Batch Suggest Signatures** – Apply signature suggestions to multiple functions with filtering.
+- **Update Function Signature** – Apply GPT-suggested function names, return types, and parameters.
+- **Batch Update Signatures** – Automatically apply improved signatures across filtered functions.
 
 ### Batch Operations
 - **Batch Function Analysis** – Identify or analyze vulnerabilities across all (or filtered) functions.
+- **Batch Signature Updates** – Rename and retype functions in bulk with GPT.
 - **Filter Support** – Optionally limit batch actions to function names containing a substring.
 
 ### Settings and Customization
 - **Set OpenAI Token** – Enter your API key.
-- **Set Temperature** – Control randomness of responses.
+- **Set Temperature** – Control randomness of responses (default: 0.3).
 - **Select Model** – Choose from supported OpenAI models (e.g., gpt-4o, gpt-3.5-turbo).
 - **Assistant Persona** – Customize the assistant's behavior/personality.
 - **Toggle Append to Comment** – Automatically append responses as comments to functions.
@@ -41,21 +42,27 @@ Latest Ghidra version tested on:11.3.2
 
 ## Installation
 
+**Compatibility Note:** If you're using Ghidra 11.3.1, install a plugin version labeled `11.3.1.x`. If you're using Ghidra 11.3.2, install a plugin version labeled `11.3.2.x`. Match the plugin version to your exact Ghidra version for best compatibility.
+
 1. Install the `.zip` file into Ghidra via `File > Install Extensions`.
 2. Open the plugin through the `Tools` menu.
+
 ---
 
-## Building the extension
+## Building the Extension
 
-1. Use gradle to compile setting your local Ghidra installation path.
+1. Use Gradle to compile by setting your local Ghidra installation path:
 
-`gradle -PGHIDRA_INSTALL_DIR=<Ghidra Path>`
+   ```bash
+   gradle -PGHIDRA_INSTALL_DIR=<Ghidra Path>
+   ```
 
-2. The extension will be generated in .zip inside the folder /dist
+2. The extension will be generated as a `.zip` inside the `/dist` folder.
+
 ---
 
 ## Requirements
-- A valid OpenAI API Token (can be set via environment variable `OPENAI_TOKEN` or UI)
+- A valid OpenAI API Token (can be set via environment variable `OPENAI_TOKEN` or through the UI)
 - Internet access to connect to OpenAI’s API
 
 ---

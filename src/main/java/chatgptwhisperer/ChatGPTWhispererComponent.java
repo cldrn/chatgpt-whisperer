@@ -32,10 +32,12 @@ public class ChatGPTWhispererComponent extends ComponentProvider {
         createMenuAction("Ask a Question", "Send a custom question about the function.", KeyEvent.VK_Q, plugin::askCustomQuestion);
         createMenuAction("Explain with Xrefs", "Use xrefs to help explain function use cases.", KeyEvent.VK_X, plugin::explainFunctionWithXrefs);
         createMenuAction("Suggest Function Signature", "Suggest return type, parameter types, and name.", KeyEvent.VK_S, plugin::suggestFunctionSignature);
+        createMenuAction("Update Function Signature", "Analyze and apply a new function signature", KeyEvent.VK_U, plugin::updateFunctionSignature);
 
         // Batch functionality
         createMenuAction("Batch/Identify All Functions", "Run identify on all functions in the binary.", KeyEvent.VK_B, plugin::identifyAllFunctions);
         createMenuAction("Batch/Analyze All Functions for Vulnerabilities", "Run vulnerability analysis on all functions.", KeyEvent.VK_N, plugin::findVulnerabilitiesInAllFunctions);
+        createMenuAction("Batch/Update Function Signatures", "Update function signatures across filtered functions", KeyEvent.VK_U, plugin::updateFunctionSignaturesInAllFunctions);
 
         createSettingsMenu();
     }

@@ -54,7 +54,7 @@ task initWhispererConfig {
             configFile.text = '''\
 # ChatGPTWhisperer Configuration
 model=gpt-4o
-temperature=0.8
+temperature=0.3
 persona=You are a reverse engineering assistant with expertise in embedded firmware and low-level systems.
 consoleOutput=true
 '''.stripIndent()
