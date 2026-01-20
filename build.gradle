@@ -53,7 +53,7 @@ task initWhispererConfig {
         } else {
             configFile.text = '''\
 # ChatGPTWhisperer Configuration
-model=gpt-4o
+model=gpt-3.5-turbo-1106
 temperature=0.3
 persona=You are a reverse engineering assistant with expertise in embedded firmware and low-level systems.
 consoleOutput=true

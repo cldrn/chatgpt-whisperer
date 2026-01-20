@@ -58,8 +58,8 @@ public class ChatGPTWhispererPlugin extends ProgramPlugin {
     private CodeViewerService cvs;
     private ChatGPTWhispererComponent uiComponent;
     private String apiToken;
-    private String openAiModel = "gpt-4o";
-    private double temperature = 0.7;
+    private String openAiModel = "gpt-3.5-turbo-1106";
+    private double temperature = 0.3;
     private boolean appendToComment = false;
     
     public ChatGPTWhispererPlugin(PluginTool tool) {

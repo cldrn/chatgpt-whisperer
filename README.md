@@ -6,7 +6,7 @@
 
 ChatGPTWhisperer is a Ghidra plugin that integrates OpenAI's ChatGPT to assist with reverse engineering tasks. It enables AI-powered function analysis, vulnerability detection, documentation, and batch processing within the Ghidra UI.
 
-Latest Ghidra version tested on: 11.4.2
+Latest Ghidra version tested on: 12.0.1
 
 [![Watch how it works!](https://img.youtube.com/vi/M80hySzSEOA/0.jpg)](https://www.youtube.com/watch?v=M80hySzSEOA)
 
