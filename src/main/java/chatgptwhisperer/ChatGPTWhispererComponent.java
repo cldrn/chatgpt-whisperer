@@ -71,14 +71,12 @@ public class ChatGPTWhispererComponent extends ComponentProvider {
         });
 
         for (String model : new String[]{
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
             "gpt-4o",
             "gpt-4",
+            "gpt-4-turbo",
             "gpt-3.5-turbo",
-            "o1",
-            "o3-mini"}) {
+            "gpt-3.5-turbo-1106",
+            "gpt-3.5-turbo-16k"}) {
             DockingAction modelAction = new DockingAction("Use Model: " + model, getName()) {
                 @Override
                 public void actionPerformed(ActionContext context) {
