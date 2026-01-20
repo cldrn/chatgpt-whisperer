@@ -61,6 +61,10 @@ public class ChatGPTWhispererPlugin extends ProgramPlugin {
     private String openAiModel = "gpt-3.5-turbo-1106";
     private double temperature = 0.3;
     private boolean appendToComment = false;
+    private String redactionRules = "";
+    private boolean enableRedactions = true;
+
+
     
     public ChatGPTWhispererPlugin(PluginTool tool) {
         super(tool);
@@ -481,16 +485,32 @@ public class ChatGPTWhispererPlugin extends ProgramPlugin {
         }
     }
 
+    private String applyRedactions(String input) {
+        if (redactionRules == null || redactionRules.isBlank()) return input;
+
+        String[] rules = redactionRules.split(",");
+        for (String rule : rules) {
+            String[] parts = rule.split("=");
+            if (parts.length == 2) {
+                String keyword = parts[0].trim();
+                String replacement = parts[1].trim();
+                input = input.replaceAll("(?i)\\b" + Pattern.quote(keyword) + "\\b", replacement);
+            }
+        }
+        return input;
+    }
+
     private String askChatGPT(String prompt) {
         if (!checkOpenAIToken()) return null;
 
+        String redactedPrompt = enableRedactions ? applyRedactions(prompt) : prompt;
         OpenAiService service = new OpenAiService(apiToken, Duration.ofSeconds(OPENAI_TIMEOUT));
         ChatCompletionRequest request = ChatCompletionRequest.builder()
             .model(openAiModel)
             .temperature(temperature)
             .messages(Arrays.asList(
                 new ChatMessage(ChatMessageRole.SYSTEM.value(), assistantPersona),
-                new ChatMessage(ChatMessageRole.USER.value(), prompt)
+                new ChatMessage(ChatMessageRole.USER.value(), redactedPrompt)
             ))
             .build();
 
@@ -528,7 +548,18 @@ public class ChatGPTWhispererPlugin extends ProgramPlugin {
         apiToken = token;
         return true;
     }
-
+    public String getRedactionRules() {
+        return redactionRules;
+    }
+    public void setRedactionRules(String rules) {
+        this.redactionRules = rules;
+    }
+    public boolean isRedactionEnabled() {
+        return enableRedactions;
+    }
+    public void setRedactionEnabled(boolean enabled) {
+        this.enableRedactions = enabled;
+    }
     public String getPersona() { return assistantPersona; }
     public void setPersona(String persona) { this.assistantPersona = persona; }
     public String getModel() { return openAiModel; }
@@ -546,6 +577,9 @@ public class ChatGPTWhispererPlugin extends ProgramPlugin {
             props.setProperty("temperature", String.valueOf(temperature));
             props.setProperty("persona", assistantPersona);
             props.setProperty("appendToComment", String.valueOf(appendToComment));
+            props.setProperty("redactionRules", redactionRules);
+            props.setProperty("enableRedactions", String.valueOf(enableRedactions));
+
             if (apiToken != null) props.setProperty("token", apiToken);
             props.store(Files.newOutputStream(path), "ChatGPTWhisperer Settings");
             ok("Settings exported to: " + path);
@@ -573,6 +607,12 @@ public class ChatGPTWhispererPlugin extends ProgramPlugin {
 
             String appendStr = props.getProperty("appendToComment");
             if (appendStr != null) appendToComment = Boolean.parseBoolean(appendStr);
+
+            String redactions = props.getProperty("redactionRules");
+            if (redactions != null) redactionRules = redactions;
+            
+            String redactToggle = props.getProperty("enableRedactions");
+            if (redactToggle != null) enableRedactions = Boolean.parseBoolean(redactToggle);
 
             ok("Settings loaded.");
         } catch (IOException e) {

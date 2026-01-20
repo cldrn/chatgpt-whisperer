@@ -70,6 +70,30 @@ public class ChatGPTWhispererComponent extends ComponentProvider {
             }
         });
 
+        addSimpleDialogAction("Set Redaction Rules", "Settings", () -> {
+            String current = plugin.getRedactionRules();
+            String updated = JOptionPane.showInputDialog(
+                null,
+                "Enter redaction rules (e.g., 'secret1,token,projectX=REDACTED'):\nUse format 'keyword' or 'keyword=replacement'.",
+                current
+            );
+            if (updated != null) {
+                plugin.setRedactionRules(updated.trim());
+                plugin.ok("Redaction rules updated.");
+            }
+        });
+
+        addSimpleDialogAction("Toggle Redactions", "Settings", () -> {
+            boolean current = plugin.isRedactionEnabled();
+            int result = JOptionPane.showConfirmDialog(null,
+                "Redactions are currently: " + (current ? "ENABLED" : "DISABLED") + "\n\nToggle to " + (!current ? "ENABLED" : "DISABLED") + "?",
+                "Toggle Redactions", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
+                plugin.setRedactionEnabled(!current);
+                plugin.ok("Redactions are now: " + (!current ? "ENABLED" : "DISABLED"));
+            }
+        });
+
         for (String model : new String[]{
             "gpt-4o",
             "gpt-4",

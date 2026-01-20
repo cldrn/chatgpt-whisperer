@@ -35,9 +35,10 @@ Latest Ghidra version tested on: 12.0.1
 - **Set Temperature** – Control randomness of responses (default: 0.3).
 - **Select Model** – Choose from supported OpenAI models (e.g., gpt-4o, gpt-3.5-turbo).
 - **Assistant Persona** – Customize the assistant's behavior/personality.
+- **Keyword Redaction** – Define keywords to automatically redact before sending requests to ChatGPT.
 - **Toggle Append to Comment** – Automatically append responses as comments to functions.
 - **Export/Import Settings** – Save or load configuration to a file.
-
+- **Toggle Redaction Filter** – Enable or disable privacy filtering for keywords.
 ---
 
 ## Installation
