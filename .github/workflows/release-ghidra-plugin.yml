@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra/ghidra_11.4.2_PUBLIC
+      GHIDRA_INSTALL_DIR: ${{ github.workspace }}/ghidra/ghidra_12.0.1_PUBLIC
 
     steps:
       - name: Checkout repository
@@ -24,13 +24,13 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Download Ghidra 11.4.2
+      - name: Download Ghidra 12.0.1
         run: |
-          wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.4.2_build/ghidra_11.4.2_PUBLIC_20250826.zip
-          unzip ghidra_11.4.2_PUBLIC_20250826.zip -d ghidra
+          wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.1_build/ghidra_12.0.1_PUBLIC_20260114.zip
+          unzip ghidra_12.0.1_PUBLIC_20260114.zip -d ghidra
 
       - name: Remove Ghidra zip to prevent accidental re-zip
-        run: rm -f ghidra_11.4.2_PUBLIC_20250826.zip
+        run: rm -f ghidra_12.0.1_PUBLIC_20260114.zip
 
       - name: Clean old dist files
         run: rm -rf dist/*
@@ -42,7 +42,7 @@ jobs:
           echo "Javac version:"
           javac -version
 
-      - name: Build ChatGPTWhisperer Plugin with Ghidra 11.4.2
+      - name: Build ChatGPTWhisperer Plugin with Ghidra 12.0.1
         run: gradle -PGHIDRA_INSTALL_DIR=${{ env.GHIDRA_INSTALL_DIR }}
 
       - name: Repackage plugin ZIP without ghidra/ folder
